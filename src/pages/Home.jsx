@@ -48,7 +48,7 @@ export default function Home() {
         backgroundImage: 'radial-gradient(circle at center, #102331 50%, #000 100%)',
       }}
     >
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-5xl mx-auto px-2 overflow-x-hidden">
         <h1 className="text-4xl font-bold text-[#00FFFF] mb-8 text-center cursor-pointer">
           <Link to="/">NebulosaFilms</Link>
         </h1>
@@ -61,7 +61,7 @@ export default function Home() {
         {!loading && movies.length === 0 && hasSearched && (
           <p className="text-center text-gray-500">No se encontraron resultados.</p>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-14 gap-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-8 lg:gap-x-14 gap-y-4">
           {movies.map((movie) => (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
               <MovieCard movie={movie} />

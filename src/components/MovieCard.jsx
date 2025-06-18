@@ -4,7 +4,7 @@ export default function MovieCard({ movie }) {
     : 'https://via.placeholder.com/300x450?text=No+Image';
 
   return (
-    <div className="max-w-xs w-64 h-[420px] flex flex-col border-2 border-[#00FFFF] rounded overflow-hidden shadow-lg transition-transform duration-200 hover:scale-105">
+    <div className="w-full h-[420px] flex flex-col border-2 border-[#00FFFF] rounded overflow-hidden shadow-lg transition-transform duration-200 hover:scale-105 max-w-xs mx-auto">
       <img
         src={posterUrl}
         alt={movie.title}
