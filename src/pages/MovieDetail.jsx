@@ -73,14 +73,14 @@ export default function MovieDetail() {
         </h1>
         <SearchBar onSearch={handleSearch} />
       </div>
-      <div className="max-w-4xl mx-auto p-6 bg-gray-600 rounded shadow mt-4 border-2 border-[#00FFFF] shadow-[0_4px_24px_0_rgba(255,255,255,0.7)]">
+      <div className="max-w-4xl mx-auto p-6 bg-gray-600 rounded mt-4 border-2 border-[#00FFFF] shadow-[0_4px_24px_0_rgba(255,255,255,0.7)]">
         <div className="flex flex-col md:flex-row gap-6">
           <img
             src={posterUrl}
             alt={movie.title}
             className="w-full md:w-64 max-w-xs max-h-[420px] object-cover rounded border-2 border-[#00FFFF] mx-auto"
           />
-          <div className='ml-2 mr-2 flex-1'>
+          <div className='flex-1 md:ml-2 md:mr-2'>
             <h2 className="text-3xl font-bold mb-2">
               <Link to="/" className="text-[#00FFFF] hover:underline">
                 {movie.title}
