@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-center p-8"
+      className="min-h-screen flex flex-col justify-center p-8 p-4 pb-24 sm:pb-8 bg-gradient-to-b from-[#102331] to-black"
       style={{
         backgroundImage: 'radial-gradient(circle at center, #102331 50%, #000 100%)',
       }}
@@ -70,8 +70,8 @@ export default function Home() {
         {/* Mensaje de bienvenida con transición */}
         <div
           className={`transition-all duration-500 ease-in-out ${showWelcome && !loading && movies.length === 0
-              ? 'opacity-100 max-h-96 mb-8 mt-12'
-              : 'opacity-0 max-h-0 mb-0 mt-0 pointer-events-none'
+            ? 'opacity-100 max-h-96 mb-8 mt-12'
+            : 'opacity-0 max-h-0 mb-0 mt-0 pointer-events-none'
             }`}
         >
           <div className="text-center text-white max-w-xl mx-auto bg-gray-700 bg-opacity-70 rounded p-6">
