@@ -69,11 +69,10 @@ export default function Home() {
         />
         {/* Mensaje de bienvenida con transición */}
         <div
-          className={`transition-all duration-500 ease-in-out ${
-            showWelcome && !loading && movies.length === 0
+          className={`transition-all duration-500 ease-in-out ${showWelcome && !loading && movies.length === 0
               ? 'opacity-100 max-h-96 mb-8 mt-12'
               : 'opacity-0 max-h-0 mb-0 mt-0 pointer-events-none'
-          }`}
+            }`}
         >
           <div className="text-center text-white max-w-xl mx-auto bg-gray-700 bg-opacity-70 rounded p-6">
             <h2 className="text-2xl font-bold mb-2 text-[#00FFFF]">¡Bienvenido!</h2>
@@ -87,11 +86,13 @@ export default function Home() {
           <p className="text-center text-gray-500">No se encontraron resultados.</p>
         )}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
-          {movies.map((movie) => (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
-              <MovieCard movie={movie} />
-            </Link>
-          ))}
+          {movies
+            .filter(movie => movie.poster_path) // Solo películas con portada
+            .map(movie => (
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                <MovieCard movie={movie} />
+              </Link>
+            ))}
         </div>
       </div>
     </div>

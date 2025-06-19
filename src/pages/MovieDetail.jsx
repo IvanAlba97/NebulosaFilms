@@ -104,14 +104,14 @@ export default function MovieDetail() {
         {cast.length > 0 && (
           <div className="w-full mb-8 mt-8">
             <strong className="text-[#00FFFF]">Reparto principal:</strong>
-            <div className="flex flex-wrap gap-4 mt-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-2">
               {cast.slice(0, 5).map(actor => (
                 <a
                   key={actor.id}
                   href={`https://es.wikipedia.org/wiki/${encodeURIComponent(actor.name.replace(/ /g, '_'))}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-gray-700 rounded p-2 hover:bg-gray-800 transition"
+                  className="flex flex-col items-center bg-gray-700 rounded p-2 hover:bg-gray-800 transition"
                   title={`Ver a ${actor.name} en Wikipedia`}
                 >
                   <img
@@ -121,9 +121,9 @@ export default function MovieDetail() {
                         : 'https://via.placeholder.com/48x72?text=No+Image'
                     }
                     alt={actor.name}
-                    className="w-12 h-12 object-cover rounded-full border-2 border-[#00FFFF]"
+                    className="w-12 h-12 object-cover rounded-full border-2 border-[#00FFFF] mb-1"
                   />
-                  <span className="text-white">{actor.name}</span>
+                  <span className="text-white text-xs text-center">{actor.name}</span>
                 </a>
               ))}
             </div>
