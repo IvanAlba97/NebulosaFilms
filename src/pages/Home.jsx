@@ -47,14 +47,14 @@ export default function Home() {
     // eslint-disable-next-line
   }, [location.key, location.search]);
 
-  // Controla la transición del mensaje de bienvenida
-  useEffect(() => {
+  // Controla la transición del mensaje de bienvenida. Desaparece cuando se busca algo
+  /* useEffect(() => {
     if (searchValue) {
       setShowWelcome(false);
     } else {
       setShowWelcome(true);
     }
-  }, [searchValue]);
+  }, [searchValue]); */
 
   // Header fijo solo en móvil y solo cuando el input está enfocado
   const headerFixed = searchFocused && window.innerWidth < 640;
