@@ -1,32 +1,28 @@
 import { useState, useEffect } from 'react';
 
-export default function SearchBar({ onSearch, value = '', setValue }) {
-  const [query, setQuery] = useState(value);
-
-  useEffect(() => {
-    setQuery(value);
-  }, [value]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSearch(query.trim());
-  };
-
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-    if (setValue) setValue(e.target.value);
-  };
-
+export default function SearchBar({ onSearch, value, setValue, inputRef }) {
   return (
-    <form onSubmit={handleSubmit} className="mb-12 flex max-w-2xl mx-auto">
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        onSearch(value);
+      }}
+      className="flex gap-2 mb-6"
+    >
       <input
+        ref={inputRef}
+        value={value}
+        onChange={e => setValue(e.target.value)}
         type="text"
-        placeholder="Buscar películas..."
-        value={query}
-        onChange={handleChange}
-        className="flex-grow px-4 py-2 border border-gray-300 rounded-l-md rounded-r-md focus:outline-none focus:ring-2 focus:ring-[#00FFFF]"
+        placeholder="Buscar película..."
+        className="flex-1 px-4 py-2 rounded border-2 border-[#00FFFF] focus:outline-none focus:border-cyan-400"
       />
-      {/* Puedes añadir el botón de búsqueda aquí si lo necesitas */}
+      <button
+        type="submit"
+        className="px-4 py-2 bg-cyan-400 text-[#102331] rounded font-bold hover:bg-cyan-300 transition"
+      >
+        Buscar
+      </button>
     </form>
   );
 }

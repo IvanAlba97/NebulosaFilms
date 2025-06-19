@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import SearchBar from '../components/SearchBar.jsx';
 import MovieCard from '../components/MovieCard.jsx';
@@ -12,9 +12,14 @@ export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
+  const searchInputRef = useRef(); // referencia para el input
 
   // Cuando el usuario busca, actualiza la URL y marca que ya buscó
   const handleSearch = (query) => {
+    // Oculta el teclado en móvil
+    if (searchInputRef.current) {
+      searchInputRef.current.blur();
+    }
     setSearchValue(query);
     setHasSearched(true);
     if (query) {
@@ -66,6 +71,7 @@ export default function Home() {
           onSearch={handleSearch}
           value={searchValue}
           setValue={setSearchValue}
+          inputRef={searchInputRef} // pasa la referencia al SearchBar
         />
         {/* Mensaje de bienvenida con transición */}
         <div
