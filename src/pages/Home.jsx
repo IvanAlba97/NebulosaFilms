@@ -99,7 +99,7 @@ export default function Home() {
           : 'opacity-0 max-h-0 mb-0 mt-0 pointer-events-none'
           }`}
       >
-        <div className="text-center text-white max-w-xl mx-2 bg-gray-700 bg-opacity-70 rounded p-6">
+        <div className="text-center text-white max-w-xl mx-auto bg-gray-700 bg-opacity-70 rounded p-6">
           <h2 className="text-2xl font-bold mb-2 text-[#00FFFF]">¡Bienvenido!</h2>
           <p>
             Explora y busca información sobre películas, descubre detalles, reparto y tráilers. Usa la barra de búsqueda para empezar.
