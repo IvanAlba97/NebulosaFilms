@@ -7,7 +7,7 @@ export default function SearchBar({ onSearch, value, setValue, inputRef }) {
         e.preventDefault();
         onSearch(value);
       }}
-      className="flex gap-2 mb-6"
+      className="flex gap-2 mt-8 mb-6"
     >
       <input
         ref={inputRef}
@@ -15,7 +15,7 @@ export default function SearchBar({ onSearch, value, setValue, inputRef }) {
         onChange={e => setValue(e.target.value)}
         type="text"
         placeholder="Buscar película..."
-        className="flex-1 px-4 py-2 rounded border-2 border-[#00FFFF] focus:outline-none focus:border-cyan-400"
+        className="flex-1 px-4 py-2 rounded border-2 border-[#00FFFF] focus:outline-none"
       />
       <button
         type="submit"
