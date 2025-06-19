@@ -134,13 +134,13 @@ export default function MovieDetail() {
         {trailerKey && (
           <div className="mt-10">
             <h3 className="text-xl font-bold text-[#00FFFF] mb-2">Tráiler</h3>
-            <div className="aspect-w-16 aspect-h-9 w-full rounded overflow-hidden">
+            <div className="w-full aspect-video rounded overflow-hidden">
               <iframe
                 src={`https://www.youtube.com/embed/${trailerKey}`}
                 title="Tráiler de la película"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="w-full h-64 md:h-96 rounded"
+                className="w-full h-full rounded"
               ></iframe>
             </div>
           </div>
