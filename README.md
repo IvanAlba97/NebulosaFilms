@@ -29,4 +29,4 @@ NebulosaFilms es una aplicación web desarrollada con **React** y **Vite** que p
 
 ---
 
-_Disfruta explorando el mundo del cine con
+_Disfruta explorando el mundo del cine con  NebulosaFilms._
