@@ -70,11 +70,6 @@ export default function Home() {
     currentPage * MOVIES_PER_PAGE
   );
 
-  // Encuentra la película más popular
-  const mostPopular = filteredMovies.length > 0
-    ? filteredMovies.reduce((a, b) => (a.popularity > b.popularity ? a : b))
-    : null;
-
   return (
     <div
       className={`min-h-screen flex flex-col justify-center p-4 pb-24 sm:pb-8 bg-gradient-to-b from-[#102331] to-black overflow-x-hidden`}
@@ -123,27 +118,6 @@ export default function Home() {
       {loading && <p className="text-center text-gray-600">Cargando...</p>}
       {!loading && filteredMovies.length === 0 && hasSearched && (
         <p className="text-center text-gray-500">No se encontraron resultados.</p>
-      )}
-
-      {/* Película más popular (solo si no hay búsqueda activa) */}
-      {!searchValue && mostPopular && (
-        <div className="max-w-2xl mx-auto mb-8">
-          <h2 className="text-xl font-bold text-[#00FFFF] mb-2 text-center">Película más popular</h2>
-          <Link to={`/movie/${mostPopular.id}`}>
-            <div className="flex flex-col sm:flex-row items-center bg-[#183d5a] bg-opacity-80 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform">
-              <img
-                src={`https://image.tmdb.org/t/p/w300${mostPopular.poster_path}`}
-                alt={mostPopular.title}
-                className="w-40 h-60 object-cover"
-              />
-              <div className="p-4 flex-1 text-center sm:text-left">
-                <h3 className="text-2xl font-bold text-[#00FFFF] mb-2">{mostPopular.title}</h3>
-                <p className="text-gray-200 text-sm mb-2">{mostPopular.release_date ? mostPopular.release_date.substring(0, 4) : 'N/A'}</p>
-                <p className="text-gray-300 text-base line-clamp-3">{mostPopular.overview}</p>
-              </div>
-            </div>
-          </Link>
-        </div>
       )}
 
       {/* Paginación */}
