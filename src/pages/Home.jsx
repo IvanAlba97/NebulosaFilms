@@ -120,7 +120,7 @@ export default function Home() {
         <p className="text-center text-gray-500">No se encontraron resultados.</p>
       )}
 
-      {/* Paginación */}
+      {/* Paginación (arriba) */}
       {filteredMovies.length > 0 && (
         <div className="flex justify-center gap-2 my-6">
           <button
@@ -149,6 +149,27 @@ export default function Home() {
           </Link>
         ))}
       </div>
+
+      {/* Paginación (abajo) */}
+      {filteredMovies.length > 0 && (
+        <div className="flex justify-center gap-2 my-6">
+          <button
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 rounded bg-cyan-400 text-[#102331] font-bold disabled:opacity-50"
+          >
+            Anterior
+          </button>
+          <span className="px-2 text-white">{currentPage} / {totalPages}</span>
+          <button
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 rounded bg-cyan-400 text-[#102331] font-bold disabled:opacity-50"
+          >
+            Siguiente
+          </button>
+        </div>
+      )}
     </div>
   );
 }
