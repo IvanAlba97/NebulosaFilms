@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../components/SearchBar.jsx';
 
@@ -11,6 +11,11 @@ export default function MovieDetail() {
   const [loading, setLoading] = useState(true);
   const [trailerKey, setTrailerKey] = useState(null);
   const [cast, setCast] = useState([]);
+  // Estados para la barra de búsqueda
+  const [searchValue, setSearchValue] = useState('');
+  const [hasSearched, setHasSearched] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
+  const searchInputRef = useRef();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,9 +53,13 @@ export default function MovieDetail() {
   }, [id]);
 
   const handleSearch = (query) => {
-    if (query) {
-      navigate(`/?search=${encodeURIComponent(query)}`);
+    if (searchInputRef.current) {
+      searchInputRef.current.blur();
     }
+    setSearchValue(query);
+    setHasSearched(true);
+    // Siempre navega a la Home con el parámetro de búsqueda
+    navigate(`/?search=${encodeURIComponent(query)}`);
   };
 
   if (loading) return <p className="text-center mt-10">Loading...</p>;
@@ -71,7 +80,14 @@ export default function MovieDetail() {
         <h1 className="text-4xl font-bold text-[#00FFFF] mb-8 text-center cursor-pointer">
           <Link to="/">NebulosaFilms</Link>
         </h1>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar
+          onSearch={handleSearch}
+          value={searchValue}
+          setValue={setSearchValue}
+          inputRef={searchInputRef}
+          onFocus={() => setSearchFocused(true)}
+          onBlur={() => setSearchFocused(false)}
+        />
       </div>
       <div className="max-w-4xl mx-auto p-6 bg-gray-600 rounded mt-4 border-2 border-[#00FFFF] shadow-[0_4px_24px_0_rgba(255,255,255,0.7)]">
         <div className="flex flex-col md:flex-row gap-6">
